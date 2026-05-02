@@ -16,16 +16,13 @@ export default function Hero() {
     // Splitting the headline text for line-by-line animation manually or using simple opacity/y transform
     // To keep it simple without SplitText plugin, we animate the whole heading or nested spans
     if (headlineRef.current) {
-      const lines = headlineRef.current.querySelectorAll(".hero-line");
       tl.fromTo(
-        lines,
-        { y: 40, opacity: 0, clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)" },
+        headlineRef.current,
+        { y: 40, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
           duration: 0.9,
-          stagger: 0.08,
           ease: "power3.out",
         }
       );
@@ -70,10 +67,12 @@ export default function Hero() {
         
         {/* Left Column: Copy */}
         <div className="flex flex-col">
-          <h1 ref={headlineRef} className="font-heading font-extrabold text-[40px] md:text-[54px] lg:text-[62px] leading-[1.1] tracking-[-0.03em] mb-6">
-            <span className="hero-line block">The UK's specialist</span>
-            <span className="hero-line block">digital partner for</span>
-            <span className="hero-line block text-amber">tradespeople.</span>
+          <h1 ref={headlineRef} className="font-syne font-extrabold text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95] mb-8">
+            The UK&apos;s specialist
+            <br />
+            digital partner for
+            <br />
+            <span className="text-amber">tradespeople.</span>
           </h1>
           
           <p ref={subheadlineRef} className="text-[18px] md:text-[20px] leading-[1.6] text-muted-light max-w-[560px] mb-10 font-normal">
