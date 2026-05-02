@@ -50,7 +50,11 @@ const sections = [
   {
     num: "02",
     title: "Trade-Specific Features",
-    intro: "We understand what makes a trades website convert. These are the tools that turn browsers into booked jobs.",
+    intro: (
+      <>
+        We understand what makes a trades website convert. These are the tools that turn browsers into booked jobs across different <Link href="/who-we-work-with" className="text-amber underline hover:text-amber-light">trade types</Link>.
+      </>
+    ),
     features: [
       "Accreditation badge display (Gas Safe, NICEIC, NAPIT, TrustMark, MCS)",
       "Emergency callout pages with click-to-call",

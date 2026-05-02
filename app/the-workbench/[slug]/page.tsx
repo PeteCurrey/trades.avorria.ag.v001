@@ -50,6 +50,10 @@ const articlesData = [
         <p className="text-muted-light mb-4">
           Relying solely on directory sites or social media means you don't own your digital presence. A bespoke website is an asset that grows in value, generating consistent, high-quality leads for your electrical business year after year.
         </p>
+        <p className="text-sm font-medium mt-8 pt-8 border-t border-white/5">
+          <span className="text-muted mr-2">Related:</span>
+          <Link href="/the-workbench/the-checkatrade-vs-your-own-website-debate" className="text-amber hover:underline">The Checkatrade vs Your Own Website Debate</Link>
+        </p>
       </>
     )
   },
@@ -96,6 +100,10 @@ const articlesData = [
         <p className="text-muted-light mb-4">
           Reviews are a massive ranking factor. You need a system to consistently generate positive Google reviews. The <Link href="/trades-platform" className="text-amber hover:underline">TradeDesk platform</Link> automates this by sending review requests via SMS immediately after a job is marked complete, ensuring a steady stream of fresh, positive signals to Google.
         </p>
+        <p className="text-sm font-medium mt-8 pt-8 border-t border-white/5">
+          <span className="text-muted mr-2">Related:</span>
+          <Link href="/the-workbench/why-every-electrician-needs-a-website-in-2025" className="text-amber hover:underline">Why Every Electrician Needs a Website in 2025</Link>
+        </p>
       </>
     )
   },
@@ -131,6 +139,10 @@ const articlesData = [
         <h2 className="text-2xl font-heading font-bold text-white mt-12 mb-4">Linking to the Register</h2>
         <p className="text-muted-light mb-4">
           For ultimate transparency, link your Gas Safe logo directly to your official listing on the Gas Safe Register website. This allows customers to verify your credentials with a single click, providing immense peace of mind.
+        </p>
+        <p className="text-sm font-medium mt-8 pt-8 border-t border-white/5">
+          <span className="text-muted mr-2">Related:</span>
+          <Link href="/the-workbench/how-to-get-your-plumbing-business-to-page-1" className="text-amber hover:underline">How to Get Your Plumbing Business to Page 1</Link>
         </p>
       </>
     )
@@ -171,6 +183,10 @@ const articlesData = [
           <li>Use an integration (like the one available via <Link href="/whats-included" className="text-amber hover:underline">our packages</Link>) to sync your Checkatrade reviews directly to your website.</li>
           <li>When potential clients find you on a directory, they will often Google your business name to vet you further. A premium website seals the deal.</li>
         </ul>
+        <p className="text-sm font-medium mt-8 pt-8 border-t border-white/5">
+          <span className="text-muted mr-2">Related:</span>
+          <Link href="/the-workbench/what-is-tradedesk-and-how-does-it-help" className="text-amber hover:underline">What Is TradeDesk and How Does It Help?</Link>
+        </p>
       </>
     )
   },
@@ -204,6 +220,10 @@ const articlesData = [
         <h2 className="text-2xl font-heading font-bold text-white mt-12 mb-4">The Result</h2>
         <p className="text-muted-light mb-4">
           By streamlining your admin, you look more professional to the client (winning more jobs), get paid faster, and free up hours of your evenings previously spent doing paperwork. Ready to see it in action? <Link href="/get-started" className="text-amber hover:underline">Get started today.</Link>
+        </p>
+        <p className="text-sm font-medium mt-8 pt-8 border-t border-white/5">
+          <span className="text-muted mr-2">Related:</span>
+          <Link href="/the-workbench/gas-safe-registration-how-to-display-it-properly" className="text-amber hover:underline">How to Display Gas Safe Properly</Link>
         </p>
       </>
     )

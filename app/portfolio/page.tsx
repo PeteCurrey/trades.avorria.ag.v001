@@ -3,6 +3,7 @@
 import { useState, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 
 const filters = ["All", "Electricians", "Plumbers", "Gas Engineers", "HVAC", "Builders", "Roofers", "Joiners", "Landscapers"];
 
@@ -296,6 +297,7 @@ function PortfolioGrid() {
   const raw = searchParams?.get("trade") || "All";
   const matched = filters.find(f => f.toLowerCase() === raw.toLowerCase()) || "All";
   const [activeFilter, setActiveFilter] = useState(matched);
+  const [selectedItem, setSelectedItem] = useState<typeof portfolioItems[0] | null>(null);
 
   const filtered = activeFilter === "All"
     ? portfolioItems
@@ -328,7 +330,7 @@ function PortfolioGrid() {
       <section className="py-16 px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filtered.map((item) => (
-            <div key={item.id} className="group cursor-pointer">
+            <div key={item.id} className="group cursor-pointer" onClick={() => setSelectedItem(item)}>
               <div className="relative mb-5 transition-all duration-300 group-hover:scale-[1.02]">
                 {item.mockHero}
                 {/* Hover overlay */}
@@ -361,6 +363,56 @@ function PortfolioGrid() {
           <p className="text-center text-muted py-20">No portfolio items for this trade yet.</p>
         )}
       </section>
+
+      {/* Lightbox / Modal */}
+      <AnimatePresence>
+        {selectedItem && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-forge-black/90 backdrop-blur-xl">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="bg-steel border border-border w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-2xl flex flex-col lg:flex-row relative"
+            >
+              <button 
+                onClick={() => setSelectedItem(null)}
+                className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-forge-black/50 border border-border text-white flex items-center justify-center hover:bg-amber hover:text-forge-black transition-colors"
+              >
+                ×
+              </button>
+
+              <div className="w-full lg:w-3/5 p-4 lg:p-8 border-r border-border bg-forge-black">
+                {selectedItem.mockHero}
+              </div>
+
+              <div className="w-full lg:w-2/5 p-8 overflow-y-auto">
+                <span className="text-amber font-mono text-xs uppercase tracking-widest mb-2 block">{selectedItem.trade} · {selectedItem.location}</span>
+                <h2 className="font-heading font-bold text-3xl text-white mb-6">{selectedItem.company}</h2>
+                
+                <div className="space-y-6">
+                  <div>
+                    <h4 className="text-sm font-semibold text-white mb-2 font-heading">The Brief</h4>
+                    <p className="text-sm text-muted-light leading-relaxed">
+                      Build a premium, high-converting digital presence that highlights their {selectedItem.badge} accreditation and emergency callout capability in {selectedItem.location}.
+                    </p>
+                  </div>
+
+                  <div className="bg-amber/5 border border-amber/20 rounded-lg p-4">
+                    <h4 className="text-sm font-semibold text-amber mb-1 font-heading">Key Outcome</h4>
+                    <p className="text-base font-bold text-white font-mono">{selectedItem.stat}</p>
+                  </div>
+
+                  <div className="pt-6">
+                    <Link href="/get-started" className="btn-primary w-full text-center">
+                      Get a Site Like This →
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
