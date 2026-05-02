@@ -6,9 +6,9 @@ export default function Footer() {
   return (
     <footer className="bg-steel border-t border-amber/50 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           {/* Column 1: About */}
-          <div>
+          <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-1 mb-6">
               <span className="font-heading font-semibold text-2xl text-white tracking-tight">Avorria</span>
               <span className="font-heading font-semibold text-2xl text-amber tracking-tight">Trades</span>
@@ -59,9 +59,36 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Contact */}
+          {/* Column 4: Resources */}
           <div>
-            <h4 className="font-heading font-semibold text-white mb-6">Contact</h4>
+            <h4 className="font-heading font-semibold text-white mb-6">Resources</h4>
+            <ul className="space-y-3">
+              <li>
+                <Link href="/the-workbench" className="text-sm text-muted hover:text-amber transition-colors">
+                  The Workbench (Blog)
+                </Link>
+              </li>
+              <li>
+                <Link href="/testimonials" className="text-sm text-muted hover:text-amber transition-colors">
+                  Testimonials
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-sm text-muted hover:text-amber transition-colors">
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-sm text-muted hover:text-amber transition-colors">
+                  About Avorria
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 5: Contact */}
+          <div>
+            <h4 className="font-heading font-semibold text-white mb-6">Get in Touch</h4>
             <ul className="space-y-3 text-sm text-muted">
               <li>01246 912 840</li>
               <li>hello@avorria.com</li>

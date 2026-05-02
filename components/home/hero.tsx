@@ -70,7 +70,7 @@ export default function Hero() {
         
         {/* Left Column: Copy */}
         <div className="flex flex-col">
-          <h1 ref={headlineRef} className="font-heading font-extrabold text-[48px] md:text-[64px] lg:text-[72px] leading-[1.1] tracking-[-0.03em] mb-6">
+          <h1 ref={headlineRef} className="font-heading font-extrabold text-[40px] md:text-[54px] lg:text-[62px] leading-[1.1] tracking-[-0.03em] mb-6">
             <span className="hero-line block">The UK's specialist</span>
             <span className="hero-line block">digital partner for</span>
             <span className="hero-line block text-amber">tradespeople.</span>

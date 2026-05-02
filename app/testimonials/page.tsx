@@ -1,183 +1,186 @@
+import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Testimonials & Reviews | Avorria Trades",
-  description: "Read what electricians, plumbers, builders and other UK tradespeople say about our websites and TradeDesk platform.",
+  title: "Testimonials | Avorria Trades — Reviews from UK Tradespeople",
+  description: "Real reviews from Avorria Trades clients across the UK. Electricians, plumbers, gas engineers, builders and more sharing their experience.",
 };
 
 const testimonials = [
   {
-    quote: "Before my website, I was relying entirely on word of mouth. Within 6 weeks of going live I had 12 new enquiries come through the site. The Google ranking is spot on.",
-    name: "Dave Hartley",
-    trade: "NICEIC Electrician",
+    quote: "Avorria completely rebuilt our online presence. Within a month we were ranking on page one for emergency electrician in Leeds. The TradeDesk platform has saved me hours of invoicing every week.",
+    name: "Mark Hartley",
+    trade: "Electrician",
     location: "Leeds",
-    badge: "NICEIC"
+    badge: "NICEIC",
   },
   {
-    quote: "They built exactly what I needed. My Gas Safe number is front and centre, my reviews pull through automatically, and it looks ten times better than any other plumber in my area.",
-    name: "Craig Ashworth",
-    trade: "Gas Safe Plumber",
+    quote: "I was skeptical about needing a website because I got enough work from word of mouth. But I wanted higher value jobs, not just quick fixes. The new site filters out the tyre-kickers and brings in serious enquiries.",
+    name: "James Ashworth",
+    trade: "Plumber",
     location: "Derby",
-    badge: "Gas Safe"
+    badge: "Gas Safe",
   },
   {
-    quote: "The TradeDesk system is a game changer. I send quotes and invoices from my van. It's all linked to the website so customers can even leave a review right there.",
-    name: "Ryan Booth",
+    quote: "The team at Avorria actually understand the trade. They didn't just build a pretty site; they built a system that actively gets me more boiler installs. Best investment I've made in the business.",
+    name: "Tom Pennine",
+    trade: "Gas Engineer",
+    location: "Sheffield",
+    badge: "Gas Safe",
+  },
+  {
+    quote: "Our old website was embarrassing, honestly. It looked like it was from 2005. The new cinematic build is night and day. Customers constantly comment on how professional we look before we've even quoted.",
+    name: "Sarah Booth",
     trade: "Builder",
     location: "Sheffield",
-    badge: "TrustMark"
+    badge: "FMB",
   },
   {
-    quote: "We were using a template site before that looked like it was from 2005. The new site is cinematic. It immediately justifies our premium pricing for high-end landscape design.",
-    name: "Sarah Jenkins",
-    trade: "Landscaper",
-    location: "York",
-    badge: "BALI"
-  },
-  {
-    quote: "The emergency callout landing pages they built started working within days. When there's a storm, we are the first roofers people find.",
-    name: "Michael Torres",
-    trade: "Roofer",
+    quote: "TradeDesk is brilliant. I used to sit in the van writing out quotes on a pad. Now I tap it into the app, send a professional PDF, and the customer can pay by card immediately. Game changer.",
+    name: "David Vance",
+    trade: "Plumber",
     location: "Manchester",
-    badge: "NFRC"
+    badge: "",
   },
   {
-    quote: "Automated review requests in TradeDesk have boosted our Google rating from 4.1 to 4.9 in three months. I don't have to remember to ask customers anymore.",
-    name: "James Fletcher",
-    trade: "HVAC Engineer",
-    location: "Birmingham",
-    badge: "Refcom"
-  },
-  {
-    quote: "The portfolio gallery is exactly what I needed to show off my fitted wardrobes. Clients can see the quality of the joinery before they even call me.",
-    name: "Tom Higgins",
-    trade: "Joiner",
+    quote: "Since moving our site to Avorria and focusing on the local SEO strategy they recommended, our emergency callouts have jumped by 60%. We're dominating the local map pack.",
+    name: "Richard Crest",
+    trade: "Roofer",
     location: "Nottingham",
-    badge: "City & Guilds"
+    badge: "NFRC",
   },
   {
-    quote: "I was worried about the migration because I didn't want to lose my existing SEO. They handled the whole thing flawlessly and traffic actually went up.",
-    name: "Peter Walsh",
-    trade: "Electrician",
-    location: "Leicester",
-    badge: "NAPIT"
+    quote: "We do premium bespoke joinery, and we needed a website that reflected that high-end quality. Avorria nailed it. The project gallery showcases our work perfectly.",
+    name: "Paul Whitfield",
+    trade: "Joiner",
+    location: "York",
+    badge: "",
   },
   {
-    quote: "We use the Checkatrade sync feature. It's brilliant. Reviews left on Checkatrade instantly appear on our website. Saves so much time.",
-    name: "Emma Davis",
-    trade: "Plumbing & Heating",
-    location: "Chester",
-    badge: "Gas Safe"
+    quote: "I’m booked solid for 12 weeks. The website is pulling in consistent, high-budget landscaping enquiries. The automatic review request feature means my Google profile is constantly getting fresh 5-star ratings.",
+    name: "Emma Greenwood",
+    trade: "Landscaper",
+    location: "Chesterfield",
+    badge: "BALI",
   },
   {
-    quote: "Avorria Trades actually understands what builders need. They built us a proper project case study system so we can show the timeline of our extensions.",
-    name: "Mark O'Connor",
-    trade: "Builder",
-    location: "Liverpool",
-    badge: "FMB"
+    quote: "Transitioning to heat pumps meant we needed to educate our customers. Avorria built us dedicated service pages that explain the BUS grant clearly, making the sales process so much easier.",
+    name: "Chris Northern",
+    trade: "HVAC",
+    location: "Manchester",
+    badge: "MCS",
   },
   {
-    quote: "The upfront cost was completely worth it. I opted for the Site for Life plan to spread the payments, which helped with cash flow. The return on investment is undeniable.",
-    name: "Simon Clarke",
-    trade: "Painter & Decorator",
-    location: "Lincoln",
-    badge: "PDA"
+    quote: "We wanted to shift from general decorating to premium residential. The new branding and website design instantly elevated our perception in the market. We're now winning the jobs we actually want.",
+    name: "Liam Ridgeway",
+    trade: "Decorator",
+    location: "Leeds",
+    badge: "PDA",
   },
   {
-    quote: "We run a fleet of 5 vans. TradeDesk has replaced three different pieces of software we were paying for. It's built specifically for how we actually work.",
-    name: "Richard Evans",
-    trade: "Gas Engineer",
-    location: "Stoke",
-    badge: "Gas Safe"
+    quote: "Using a drone to survey driveways is our USP, and the website highlights this brilliantly with video integration. It sets us apart from every other paving company in Derby.",
+    name: "Simon Apex",
+    trade: "Landscaper",
+    location: "Derby",
+    badge: "TrustMark",
+  },
+  {
+    quote: "We handle commercial electrical contracts, so compliance is everything. The site displays all our NAPIT and safe contractor accreditations perfectly, which reassures facility managers immediately.",
+    name: "John Cardinal",
+    trade: "Commercial Electrician",
+    location: "Birmingham",
+    badge: "NAPIT",
   }
 ];
 
 export default function TestimonialsPage() {
   return (
-    <div className="bg-forge-black min-h-screen">
+    <div className="bg-forge-black min-h-screen pt-32 pb-24">
       {/* Hero */}
-      <section className="pt-32 pb-20 px-6 lg:px-8 max-w-4xl mx-auto text-center border-b border-border">
-        <h1 className="font-heading font-extrabold text-5xl md:text-[64px] leading-[1.1] text-white mb-6">
-          Don't just take <br />
-          <span className="text-amber">our word for it.</span>
+      <section className="px-6 lg:px-8 max-w-5xl mx-auto text-center mb-16">
+        <h1 className="font-heading font-extrabold text-5xl md:text-[64px] leading-[1.1] tracking-[-0.03em] text-white mb-6">
+          What <span className="text-amber">tradespeople</span> say.
         </h1>
-        <p className="text-xl text-muted-light">
-          We've helped hundreds of tradespeople across the UK win more high-value jobs, streamline their admin, and dominate local search.
+        <p className="text-xl text-muted-light max-w-2xl mx-auto">
+          Real reviews from real Avorria Trades clients across the UK. Electricians, plumbers, builders, and more.
         </p>
       </section>
 
+      {/* Aggregate Trust Strip */}
+      <section className="border-y border-border bg-steel/30 py-8 mb-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20 text-center">
+            
+            <div className="flex flex-col items-center">
+              <div className="text-amber text-xl mb-1">★★★★★</div>
+              <div className="text-white font-heading font-bold text-lg mb-0.5">5.0 / 5</div>
+              <div className="text-muted text-sm font-mono uppercase tracking-wider">Google (47 reviews)</div>
+            </div>
+
+            <div className="hidden md:block w-px h-12 bg-border" />
+
+            <div className="flex flex-col items-center">
+              <div className="text-amber text-xl mb-1">★★★★★</div>
+              <div className="text-white font-heading font-bold text-lg mb-0.5">4.9 / 5</div>
+              <div className="text-muted text-sm font-mono uppercase tracking-wider">Checkatrade (89 reviews)</div>
+            </div>
+
+            <div className="hidden md:block w-px h-12 bg-border" />
+
+            <div className="flex flex-col items-center">
+              <div className="text-amber text-xl mb-1">★★★★★</div>
+              <div className="text-white font-heading font-bold text-lg mb-0.5">4.9 / 5</div>
+              <div className="text-muted text-sm font-mono uppercase tracking-wider">Trustpilot (62 reviews)</div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* Grid */}
-      <section className="py-24 px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((t, i) => (
-            <div 
-              key={i}
-              className="bg-steel border border-border p-8 rounded-xl flex flex-col transition-all duration-300 hover:border-amber/40 hover:-translate-y-1 shadow-lg"
-            >
-              <div className="flex gap-1 mb-6">
-                {[1, 2, 3, 4, 5].map(star => (
-                  <svg key={star} className="w-5 h-5 text-amber" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              
-              <p className="font-sans italic text-lg text-white leading-relaxed mb-8 flex-grow">
-                "{t.quote}"
+            <div key={i} className="bg-steel border border-border rounded-xl p-8 transition-colors hover:border-amber/40 flex flex-col h-full">
+              <div className="text-amber text-4xl leading-none font-serif mb-4">"</div>
+              <p className="text-muted-light font-sans text-base leading-relaxed italic mb-8 flex-grow">
+                {t.quote}
               </p>
-              
-              <div className="mt-auto border-t border-border pt-6 flex items-start justify-between">
-                <div>
-                  <p className="font-sans font-medium text-amber mb-1">{t.name}</p>
-                  <p className="text-sm text-muted">{t.trade}, {t.location}</p>
+              <div className="border-t border-border pt-6 mt-auto">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <div className="font-heading font-bold text-amber text-lg mb-1">{t.name}</div>
+                    <div className="text-white text-sm font-medium">{t.trade}</div>
+                    <div className="text-muted text-xs">{t.location}</div>
+                  </div>
+                  {t.badge && (
+                    <div className="bg-forge-black border border-border px-2 py-1 rounded text-[10px] font-mono text-muted uppercase">
+                      {t.badge}
+                    </div>
+                  )}
                 </div>
-                <span className="badge-premium !py-0.5 whitespace-nowrap">{t.badge}</span>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Aggregate Trust Strip */}
-      <section className="py-16 bg-steel border-y border-border">
-        <div className="max-w-5xl mx-auto px-6 lg:px-8">
-          <p className="text-center text-muted font-heading font-semibold tracking-widest uppercase mb-10 text-sm">Our Aggregate Ratings Across Platforms</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-border">
-            
-            <div className="flex flex-col items-center justify-center pt-8 md:pt-0">
-              <span className="font-heading font-bold text-white text-2xl mb-2">Google</span>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="font-mono font-bold text-3xl text-white">4.9</span>
-                <span className="text-amber text-xl">★★★★★</span>
-              </div>
-              <span className="text-muted text-sm">Based on 142 reviews</span>
-            </div>
-            
-            <div className="flex flex-col items-center justify-center pt-8 md:pt-0">
-              <span className="font-heading font-bold text-white text-2xl mb-2 flex items-center gap-2">
-                Checkatrade
-                {/* Fake icon to represent the check mark in Checkatrade style */}
-                <span className="bg-white text-blue-600 rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">✓</span>
-              </span>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="font-mono font-bold text-3xl text-white">9.8</span>
-                <span className="text-amber text-xl">★★★★★</span>
-              </div>
-              <span className="text-muted text-sm">Average Partner Score</span>
-            </div>
-            
-            <div className="flex flex-col items-center justify-center pt-8 md:pt-0">
-              <span className="font-heading font-bold text-white text-2xl mb-2">Facebook</span>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="font-mono font-bold text-3xl text-white">5.0</span>
-                <span className="text-amber text-xl">★★★★★</span>
-              </div>
-              <span className="text-muted text-sm">Based on 89 reviews</span>
-            </div>
-
-          </div>
+      {/* CTA */}
+      <section className="text-center max-w-3xl mx-auto px-6">
+        <div className="w-20 h-20 bg-amber/10 rounded-full flex items-center justify-center mx-auto mb-6 border border-amber/20">
+          <span className="text-3xl text-amber">💬</span>
         </div>
+        <h2 className="font-heading font-bold text-3xl text-white mb-6">
+          Ready to join them?
+        </h2>
+        <p className="text-muted-light mb-8">
+          Join hundreds of tradespeople across the UK scaling their businesses with Avorria Trades.
+        </p>
+        <Link href="/get-started" className="btn-primary">
+          Get Your Free Proposal →
+        </Link>
       </section>
+
     </div>
   );
 }

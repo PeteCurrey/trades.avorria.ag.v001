@@ -2,70 +2,83 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const stats = [
+  { value: 500, prefix: "", suffix: "+", label: "Trades websites built", note: "across the UK" },
+  { value: 98, prefix: "", suffix: "%", label: "Customer satisfaction", note: "year 1 & beyond" },
+  { value: 2400, prefix: "£", suffix: "", label: "Avg. added annual revenue", note: "per client, year 1" },
+  { value: 3, prefix: "", suffix: " Weeks", label: "Typical go-live time", note: "from brief to launch" },
+];
 
 export default function StatsStrip() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (containerRef.current) {
-      const counters = containerRef.current.querySelectorAll(".stat-number");
-      
-      counters.forEach((counter) => {
-        const targetValue = parseFloat(counter.getAttribute("data-target") || "0");
-        const prefix = counter.getAttribute("data-prefix") || "";
-        const suffix = counter.getAttribute("data-suffix") || "";
-        const isDecimal = targetValue % 1 !== 0;
+    if (!ref.current) return;
 
-        gsap.to(counter, {
-          innerHTML: targetValue,
+    const ctx = gsap.context(() => {
+      const counters = gsap.utils.toArray<HTMLElement>("[data-counter]");
+      counters.forEach((el) => {
+        const target = parseFloat(el.dataset.counter || "0");
+        const prefix = el.dataset.prefix || "";
+        const suffix = el.dataset.suffix || "";
+
+        const obj = { val: 0 };
+        gsap.to(obj, {
+          val: target,
           duration: 2,
           ease: "power2.out",
           scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 80%",
+            trigger: el,
+            start: "top 85%",
             once: true,
           },
-          onUpdate: function () {
-            const val = this.targets()[0].innerHTML;
-            // Format number with commas
-            const formattedVal = Number(val).toLocaleString(undefined, {
-              minimumFractionDigits: isDecimal ? 1 : 0,
-              maximumFractionDigits: isDecimal ? 1 : 0,
-            });
-            this.targets()[0].innerHTML = `${prefix}${formattedVal}${suffix}`;
+          onUpdate: () => {
+            el.textContent = `${prefix}${Math.round(obj.val).toLocaleString()}${suffix}`;
           },
         });
       });
-    }
+
+      // Fade in the section
+      gsap.fromTo(
+        ref.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ref.current,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+    }, ref);
+
+    return () => ctx.revert();
   }, []);
 
-  const stats = [
-    { target: 500, suffix: "+", label: "Trades websites" },
-    { target: 98, suffix: "%", label: "Customer satisfaction" },
-    { target: 2400, prefix: "£", label: "Avg. added annual revenue" },
-    { target: 3, label: "Weeks typical site live time" },
-  ];
-
   return (
-    <section className="bg-amber py-20 relative z-10" ref={containerRef}>
+    <section ref={ref} className="border-y border-border bg-steel/30 py-16">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-6 text-forge-black">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-0 divide-x-0 lg:divide-x divide-border">
           {stats.map((stat, i) => (
-            <div key={i} className="flex flex-col items-center md:items-start text-center md:text-left">
-              <div className="font-mono font-bold text-4xl md:text-[56px] leading-tight mb-2 tracking-tighter">
-                {/* Fallback to 0 for initial render */}
-                <span 
-                  className="stat-number inline-block" 
-                  data-target={stat.target} 
-                  data-prefix={stat.prefix || ""} 
-                  data-suffix={stat.suffix || ""}
-                >
-                  {stat.prefix}0{stat.suffix}
-                </span>
-              </div>
-              <p className="font-sans font-medium text-sm md:text-base max-w-[160px] opacity-90 leading-tight">
-                {stat.label}
+            <div key={i} className="flex flex-col items-start lg:items-center text-left lg:text-center px-0 lg:px-8">
+              <p
+                className="font-mono font-bold text-4xl md:text-5xl text-white mb-2"
+                data-counter={stat.value}
+                data-prefix={stat.prefix}
+                data-suffix={stat.suffix}
+              >
+                {stat.prefix}0{stat.suffix}
               </p>
+              <p className="font-heading font-semibold text-white text-base mb-1">{stat.label}</p>
+              <p className="text-muted text-sm">{stat.note}</p>
             </div>
           ))}
         </div>

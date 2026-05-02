@@ -1,171 +1,343 @@
-import { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "What's Included | Avorria Trades",
-  description: "A detailed breakdown of every feature included in our trades website and TradeDesk packages.",
-};
+import { useEffect, useRef } from "react";
+import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const includedSections = [
+gsap.registerPlugin(ScrollTrigger);
+
+const sections = [
   {
-    title: "1. Website Design & Build",
-    description: "Every website we build is bespoke, cinematic, and engineered specifically for your trade. We don't use generic templates.",
-    icon: (
-      <svg className="w-8 h-8 text-amber" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-    ),
+    num: "01",
+    title: "Website Design & Build",
+    intro: "Every website we build is bespoke, engineered for your specific trade, and cinematic in execution. No templates. No shortcuts.",
     features: [
-      "Bespoke cinematic design tailored to your specific trade",
-      "Mobile-first responsive architecture (looks perfect on any device)",
-      "High-speed loading times (essential for Google rankings)",
-      "Custom service pages with targeted copywriting",
-      "Professional portfolio / project galleries",
-      "About Us and Meet the Team pages",
-      "Contact page with interactive maps",
-      "Full SSL security certificate"
-    ]
+      "Bespoke design tailored to your trade and brand",
+      "Mobile-first responsive layout",
+      "Page speed optimised — sub-2-second load times",
+      "Accessibility-compliant (WCAG 2.1 AA)",
+      "Cinematic scroll animations and micro-interactions",
+      "SEO-friendly URL structure",
+      "Schema markup for trades businesses",
+      "Cross-browser tested",
+    ],
+    mockup: (
+      <div className="bg-steel border border-border rounded-xl overflow-hidden">
+        <div className="h-8 bg-steel-light border-b border-border flex items-center px-4 gap-1.5">
+          <div className="w-2.5 h-2.5 rounded-full bg-border" />
+          <div className="w-2.5 h-2.5 rounded-full bg-border" />
+          <div className="w-2.5 h-2.5 rounded-full bg-border" />
+          <div className="ml-4 w-32 h-3 bg-forge-black rounded-full" />
+        </div>
+        <div className="p-6 space-y-3">
+          <div className="h-8 w-3/4 bg-forge-black rounded" />
+          <div className="h-4 w-full bg-forge-black/60 rounded" />
+          <div className="h-4 w-2/3 bg-forge-black/60 rounded" />
+          <div className="flex gap-3 mt-4">
+            <div className="h-9 w-28 bg-amber/80 rounded-sm" />
+            <div className="h-9 w-28 bg-forge-black border border-border rounded-sm" />
+          </div>
+          <div className="mt-4 grid grid-cols-3 gap-2">
+            {[1, 2, 3, 4, 5, 6].map(i => (
+              <div key={i} className="aspect-square bg-forge-black rounded border border-border" />
+            ))}
+          </div>
+        </div>
+      </div>
+    ),
   },
   {
-    title: "2. Trade-Specific Features",
-    description: "We understand what makes a trades website convert. These are the tools that turn browsers into booked jobs.",
-    icon: (
-      <svg className="w-8 h-8 text-amber" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
-      </svg>
-    ),
+    num: "02",
+    title: "Trade-Specific Features",
+    intro: "We understand what makes a trades website convert. These are the tools that turn browsers into booked jobs.",
     features: [
-      "Prominent accreditation badge display (NICEIC, Gas Safe, etc.)",
-      "Sticky 'Click to Call' buttons for emergency jobs",
-      "Bespoke quote request forms with trade-specific questions",
-      "Emergency callout landing pages",
-      "Guarantee and insurance certificate display areas",
-      "Before and after image sliders"
-    ]
-  },
-  {
-    title: "3. SEO & Local Search",
-    description: "A beautiful website is useless if nobody can find it. Our sites are built from the ground up to dominate your local area.",
-    icon: (
-      <svg className="w-8 h-8 text-amber" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-      </svg>
-    ),
-    features: [
-      "Local SEO strategy focused on your primary service areas",
-      "Google Business Profile creation and optimization",
-      "Schema markup (helps Google understand you are a local trade business)",
-      "Keyword-optimised copywriting by our UK team",
-      "XML sitemap generation and submission",
-      "Page speed optimization for Core Web Vitals"
-    ]
-  },
-  {
-    title: "4. TradeDesk Platform",
-    description: "Included in our Forge and Titan packages, TradeDesk is your complete business management system.",
-    icon: (
-      <svg className="w-8 h-8 text-amber" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
-      </svg>
-    ),
-    features: [
-      "Job management and calendar scheduling",
-      "Professional quote and invoice builder",
-      "Customer CRM (database of all your clients)",
-      "Automated SMS/Email review requests post-job",
-      "Stripe payment integration for immediate card payments",
-      "Financial dashboard and reporting"
-    ]
-  },
-  {
-    title: "5. Support & Maintenance",
-    description: "We don't just build it and leave you to it. We manage the technical side so you can focus on the tools.",
-    icon: (
-      <svg className="w-8 h-8 text-amber" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-      </svg>
-    ),
-    features: [
-      "Premium UK-based hosting on Vercel infrastructure",
-      "Daily automated backups of your website and data",
-      "Security updates and patching",
-      "Easy-to-use CMS (Content Management System) for your own updates",
-      "Ongoing technical support from our Chesterfield team",
-      "Regular strategy review calls (Titan package)"
-    ]
-  },
-  {
-    title: "6. Integrations",
-    description: "Connect your website with the tools and platforms you already use.",
-    icon: (
-      <svg className="w-8 h-8 text-amber" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-      </svg>
-    ),
-    features: [
-      "Checkatrade review sync (pull reviews to your site automatically)",
-      "Google Business Profile review sync",
-      "TrustMark API integration",
-      "WhatsApp Business chat widget",
-      "Social media feed integration (Instagram/Facebook)",
-      "Google Analytics 4 setup and reporting"
-    ]
-  }
-];
-
-export default function WhatsIncludedPage() {
-  return (
-    <div className="bg-forge-black min-h-screen">
-      {/* Hero */}
-      <section className="pt-32 pb-20 px-6 lg:px-8 max-w-4xl mx-auto text-center border-b border-border">
-        <h1 className="font-heading font-extrabold text-5xl md:text-[64px] leading-[1.1] text-white mb-6">
-          Everything <span className="text-amber">included.</span>
-        </h1>
-        <p className="text-xl text-muted-light">
-          A completely transparent breakdown of everything you get when you partner with Avorria Trades.
-        </p>
-      </section>
-
-      {/* Feature Breakdown */}
-      <section className="py-24 px-6 lg:px-8 max-w-5xl mx-auto">
-        <div className="space-y-24">
-          {includedSections.map((section, index) => (
-            <div key={index} className="flex flex-col md:flex-row gap-8 lg:gap-16">
-              
-              {/* Left Column: Heading & Description */}
-              <div className="md:w-1/3 shrink-0">
-                <div className="w-16 h-16 rounded-xl bg-steel border border-border flex items-center justify-center mb-6 shadow-lg">
-                  {section.icon}
-                </div>
-                <h2 className="font-heading font-bold text-2xl text-white mb-4">
-                  {section.title}
-                </h2>
-                <p className="text-muted-light leading-relaxed">
-                  {section.description}
-                </p>
-              </div>
-
-              {/* Right Column: Features List */}
-              <div className="md:w-2/3 md:pt-4">
-                <div className="bg-steel border border-border rounded-xl p-8">
-                  <ul className="space-y-5">
-                    {section.features.map((feature, fIndex) => (
-                      <li key={fIndex} className="flex items-start gap-4">
-                        {/* Amber Tick Icon */}
-                        <svg className="w-6 h-6 text-amber shrink-0 bg-amber/10 rounded-full p-1 mt-[-2px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span className="text-white text-base leading-relaxed">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
+      "Accreditation badge display (Gas Safe, NICEIC, NAPIT, TrustMark, MCS)",
+      "Emergency callout pages with click-to-call",
+      "Service area maps and geo-targeting",
+      "Project gallery with before/after sliders",
+      "Quote request forms with smart routing",
+      "Trade-specific service pages (EV chargers, EICR, boiler installs etc.)",
+      "Insurance and guarantee display",
+      "Compliance certificate descriptions",
+    ],
+    mockup: (
+      <div className="bg-steel border border-border rounded-xl p-6 space-y-4">
+        <div className="flex justify-between items-start">
+          <div>
+            <div className="text-amber font-mono text-xs uppercase tracking-wider mb-1">NICEIC Approved</div>
+            <div className="font-heading font-bold text-white text-lg">Hartley Electrical</div>
+          </div>
+          <div className="bg-amber/10 border border-amber/30 rounded px-2 py-1 text-amber text-xs font-mono">GAS SAFE: 123456</div>
+        </div>
+        <div className="bg-amber flex items-center justify-center rounded-sm py-2.5">
+          <span className="text-forge-black font-bold text-sm">📞 24/7 EMERGENCY CALLOUT</span>
+        </div>
+        <div className="grid grid-cols-2 gap-2">
+          {["Consumer Units", "EICR Testing", "EV Chargers", "Rewires"].map((s, i) => (
+            <div key={i} className="bg-forge-black border border-border rounded p-2.5 text-xs text-muted-light">
+              <div className="text-amber text-[10px] mb-0.5">SERVICE</div>
+              {s}
             </div>
           ))}
         </div>
+      </div>
+    ),
+  },
+  {
+    num: "03",
+    title: "SEO & Local Search",
+    intro: "A beautiful website is useless if nobody can find it. Our sites are built from the ground up to dominate your local area on Google.",
+    features: [
+      "Local SEO architecture (Google ranks you for \"near me\" searches)",
+      "Service + location landing pages",
+      "Google Business Profile setup and optimisation",
+      "Schema.org structured data",
+      "Sitemap and robots.txt configuration",
+      "Page speed optimisation (Core Web Vitals)",
+      "Monthly SEO performance reports (Forge & Titan)",
+      "Multi-location targeting (Titan)",
+    ],
+    mockup: (
+      <div className="bg-steel border border-border rounded-xl p-6 space-y-4">
+        <div className="text-xs text-muted font-mono uppercase tracking-wider">Google Search Results</div>
+        <div className="space-y-3">
+          {[
+            { rank: "1", query: "Electrician Sheffield", pos: "↑ #1" },
+            { rank: "2", query: "Emergency plumber Derby", pos: "↑ #2" },
+            { rank: "3", query: "Gas engineer near me", pos: "↑ #3" },
+          ].map((r, i) => (
+            <div key={i} className="bg-forge-black border border-border rounded p-3 flex justify-between items-center">
+              <div>
+                <div className="text-xs text-muted mb-0.5">yourtrade.com</div>
+                <div className="text-white text-sm">{r.query}</div>
+              </div>
+              <span className="text-emerald-400 font-mono text-sm font-bold">{r.pos}</span>
+            </div>
+          ))}
+        </div>
+        <div className="border-t border-border pt-3 text-xs text-muted flex justify-between">
+          <span>Monthly organic visits</span>
+          <span className="text-amber font-mono font-bold">↑ 847</span>
+        </div>
+      </div>
+    ),
+  },
+  {
+    num: "04",
+    title: "TradeDesk Platform",
+    intro: (
+      <>
+        Included as standard in <Link href="/packages#forge" className="text-amber underline hover:text-amber-light">Forge</Link> and Titan packages — <Link href="/trades-platform" className="text-amber underline hover:text-amber-light">TradeDesk</Link> connects your website, your jobs, your customers, and your reviews in one place.
+      </>
+    ),
+    features: [
+      "Job management and scheduling",
+      "Quote and invoice builder with Stripe payments",
+      "Customer CRM with full job history",
+      "Review request automation",
+      "Checkatrade integration",
+      "Income dashboard with monthly comparisons",
+      "Mobile-friendly — works in your van",
+      "No additional subscription fees",
+    ],
+    mockup: (
+      <div className="bg-steel border border-border rounded-xl p-6 space-y-4">
+        <div className="flex items-center gap-2 mb-4">
+          <span className="w-8 h-8 rounded bg-amber flex items-center justify-center font-heading font-bold text-forge-black text-xs">TD</span>
+          <span className="font-heading font-semibold text-white">TradeDesk</span>
+          <span className="ml-auto text-emerald-400 text-xs flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" /> Live
+          </span>
+        </div>
+        <div className="bg-forge-black rounded-lg p-4">
+          <div className="text-xs text-muted mb-1">Income this month</div>
+          <div className="font-mono font-bold text-2xl text-white">£8,240<span className="text-amber">.00</span></div>
+          <div className="text-emerald-400 text-xs mt-1">↑ 18% vs last month</div>
+        </div>
+        <div className="grid grid-cols-2 gap-2">
+          <div className="bg-forge-black rounded p-3 text-center border border-border">
+            <div className="font-mono font-bold text-white">12</div>
+            <div className="text-muted text-[10px]">Active Jobs</div>
+          </div>
+          <div className="bg-forge-black rounded p-3 text-center border border-border">
+            <div className="font-mono font-bold text-amber">£1,840</div>
+            <div className="text-muted text-[10px]">Outstanding</div>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    num: "05",
+    title: "Support & Maintenance",
+    intro: "We don't just build and leave. We manage the technical side so you can focus on the tools in your hand, not the technology on your desk.",
+    features: [
+      "Fixed-price monthly maintenance — no surprises",
+      "UK hosting included",
+      "SSL certificate included",
+      "Daily automated backups",
+      "Security monitoring and updates",
+      "Content updates (Forge & Titan: 2 hours/month free)",
+      "Email support with 24-hour response SLA",
+      "Dedicated account manager (Titan)",
+    ],
+    mockup: (
+      <div className="bg-steel border border-border rounded-xl p-6 space-y-4">
+        <h4 className="font-heading text-white text-sm font-semibold">System Status</h4>
+        {[
+          { label: "Website uptime", status: "99.98%", ok: true },
+          { label: "SSL Certificate", status: "Valid · 328 days", ok: true },
+          { label: "Last backup", status: "2h ago", ok: true },
+          { label: "Security scans", status: "Clean", ok: true },
+        ].map((row, i) => (
+          <div key={i} className="flex justify-between items-center border-b border-border/50 pb-3">
+            <span className="text-muted-light text-sm">{row.label}</span>
+            <span className={`text-xs font-mono flex items-center gap-2 ${row.ok ? "text-emerald-400" : "text-amber"}`}>
+              <span className="w-1.5 h-1.5 rounded-full bg-current" />
+              {row.status}
+            </span>
+          </div>
+        ))}
+        <div className="bg-amber/5 border border-amber/20 rounded p-3 text-xs text-amber">
+          Next scheduled maintenance: None pending
+        </div>
+      </div>
+    ),
+  },
+  {
+    num: "06",
+    title: "Integrations",
+    intro: "Connect your website with the platforms you already use and trust. Everything talks to everything.",
+    features: [
+      "Google Business Profile sync",
+      "Checkatrade integration",
+      "TrustMark integration",
+      "Facebook & Instagram feed integration",
+      "Mailchimp / email marketing connection",
+      "WhatsApp click-to-chat",
+      "Stripe payment processing (TradeDesk)",
+      "Xero / QuickBooks (Titan, on request)",
+    ],
+    mockup: (
+      <div className="bg-steel border border-border rounded-xl p-6 space-y-3">
+        <h4 className="font-heading text-white text-sm font-semibold mb-4">Connected Platforms</h4>
+        {[
+          { name: "Google Business Profile", status: "Connected", icon: "G" },
+          { name: "Checkatrade", status: "Syncing", icon: "C" },
+          { name: "Stripe Payments", status: "Active", icon: "S" },
+          { name: "TrustMark", status: "Connected", icon: "T" },
+        ].map((p, i) => (
+          <div key={i} className="flex items-center gap-3 border-b border-border/50 pb-3">
+            <div className="w-8 h-8 rounded bg-forge-black border border-border flex items-center justify-center text-xs font-mono text-amber font-bold">
+              {p.icon}
+            </div>
+            <span className="text-muted-light text-sm flex-grow">{p.name}</span>
+            <span className="text-emerald-400 text-xs font-mono flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              {p.status}
+            </span>
+          </div>
+        ))}
+      </div>
+    ),
+  },
+];
+
+export default function WhatsIncludedPage() {
+  const sectionsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      sectionsRef.current.forEach((el) => {
+        if (!el) return;
+        const children = el.querySelectorAll(".reveal-child");
+        gsap.fromTo(
+          children,
+          { y: 40, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1.0,
+            stagger: 0.08,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 80%",
+              once: true,
+            },
+          }
+        );
+      });
+    });
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <div className="bg-forge-black min-h-screen">
+      {/* Hero */}
+      <section className="pt-32 pb-20 px-6 lg:px-8 max-w-5xl mx-auto border-b border-border">
+        <h1 className="font-heading font-extrabold text-5xl md:text-[64px] leading-[1.1] tracking-[-0.03em] text-white mb-6">
+          What's actually <span className="text-amber">included.</span>
+        </h1>
+        <p className="text-xl text-muted-light max-w-[600px]">
+          Every Avorria Trades website is built to a specification. No vague promises. Here's exactly what you get.
+        </p>
       </section>
-      
+
+      {/* Feature Sections */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24 space-y-32">
+        {sections.map((section, i) => (
+          <div
+            key={i}
+            ref={(el) => { sectionsRef.current[i] = el; }}
+            className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start ${i % 2 === 1 ? "lg:[direction:rtl]" : ""}`}
+          >
+            {/* Text column */}
+            <div className={i % 2 === 1 ? "lg:[direction:ltr]" : ""}>
+              <div className="reveal-child">
+                <span className="font-mono font-bold text-[80px] leading-none text-amber opacity-20 select-none block mb-6">
+                  {section.num}
+                </span>
+              </div>
+              <h2 className="font-heading font-bold text-3xl md:text-4xl text-white mb-6 reveal-child">
+                {section.title}
+              </h2>
+              <p className="text-muted-light text-lg leading-relaxed mb-10 reveal-child">
+                {section.intro}
+              </p>
+              <ul className="space-y-3 reveal-child">
+                {section.features.map((feature, fi) => (
+                  <li key={fi} className="flex items-start gap-3">
+                    <span className="text-amber font-mono mt-0.5 shrink-0">✓</span>
+                    <span className="text-muted-light">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Mockup column */}
+            <div className={`reveal-child ${i % 2 === 1 ? "lg:[direction:ltr]" : ""}`}>
+              {section.mockup}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Bottom CTA */}
+      <section className="py-24 border-t border-border bg-steel/20 text-center">
+        <h2 className="font-heading font-bold text-3xl md:text-4xl text-white mb-6">
+          Ready to see exactly what we'd build for your trade?
+        </h2>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+          <Link href="/get-started" className="btn-primary">
+            Get a Free Quote →
+          </Link>
+          <Link href="/packages" className="btn-secondary">
+            View Packages
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

@@ -30,8 +30,8 @@ export default function PackagesPage() {
           <PackageCard
             name="SPARK"
             description="For sole traders getting started"
-            upfrontPrice="£799"
-            monthlyPrice="£49"
+            upfrontPrice="£999"
+            monthlyPrice="£69"
             features={[
               "5-page bespoke website",
               "Mobile-optimised, fast-loading",
@@ -53,8 +53,8 @@ export default function PackagesPage() {
           <PackageCard
             name="FORGE"
             description="For established tradespeople who want to dominate locally"
-            upfrontPrice="£1,499"
-            monthlyPrice="£79"
+            upfrontPrice="£1,799"
+            monthlyPrice="£99"
             isPopular={true}
             features={[
               "Everything in Spark, plus:",
@@ -74,8 +74,8 @@ export default function PackagesPage() {
           <PackageCard
             name="TITAN"
             description="For multi-van operations and growing trade businesses"
-            upfrontPrice="£2,999"
-            monthlyPrice="£149"
+            upfrontPrice="£3,499"
+            monthlyPrice="£179"
             features={[
               "Everything in Forge, plus:",
               "Unlimited pages",
