@@ -1,26 +1,86 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-forge-black: #0A0A0A;
+  --color-steel: #1A1D21;
+  --color-steel-light: #252830;
+  --color-amber: #F59E0B;
+  --color-amber-light: #FCD34D;
+  --color-amber-glow: rgba(245,158,11,0.15);
+  --color-white: #FAFAFA;
+  --color-muted: #9CA3AF;
+  --color-muted-light: #D1D5DB;
+  --color-border: rgba(255,255,255,0.08);
+  --color-border-amber: rgba(245,158,11,0.3);
+
+  --font-sans: var(--font-inter), sans-serif;
+  --font-heading: var(--font-syne), sans-serif;
+  --font-mono: var(--font-jetbrains), monospace;
+
+  /* We'll use CSS variables directly for some tokens to map them easily if needed */
+  --color-background: var(--color-forge-black);
+  --color-foreground: var(--color-white);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --colour-forge-black: #0A0A0A;
+  --colour-steel: #1A1D21;
+  --colour-steel-light: #252830;
+  --colour-amber: #F59E0B;
+  --colour-amber-light: #FCD34D;
+  --colour-amber-glow: rgba(245,158,11,0.15);
+  --colour-white: #FAFAFA;
+  --colour-muted: #9CA3AF;
+  --colour-muted-light: #D1D5DB;
+  --colour-border: rgba(255,255,255,0.08);
+  --colour-border-amber: rgba(245,158,11,0.3);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--colour-forge-black);
+  color: var(--colour-white);
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base custom utilities requested by the prompt */
+@layer components {
+  .btn-primary {
+    @apply bg-amber text-forge-black font-semibold px-6 py-3 rounded-sm transition-all duration-200 hover:scale-[1.02] hover:bg-amber-light;
+  }
+  
+  .btn-secondary {
+    @apply border border-amber text-amber px-6 py-3 rounded-sm transition-all duration-200 hover:bg-amber hover:text-forge-black;
+  }
+
+  .btn-ghost {
+    @apply text-muted transition-colors duration-200 hover:text-white relative;
+  }
+  
+  .btn-ghost::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-300 ease-out;
+  }
+  
+  .btn-ghost:hover::after {
+    @apply w-full;
+  }
+
+  .card-premium {
+    @apply bg-steel border border-border p-10 transition-all duration-300 hover:border-border-amber relative overflow-hidden;
+  }
+  
+  .card-premium::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-[2px] bg-amber opacity-0 transition-opacity duration-300;
+  }
+  
+  .card-premium:hover::before {
+    @apply opacity-100;
+  }
+
+  .badge-premium {
+    @apply bg-amber/10 border border-amber/30 text-amber text-xs font-mono px-3 py-1 rounded-full;
+  }
 }
