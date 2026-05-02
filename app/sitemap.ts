@@ -1,5 +1,6 @@
 import { trades } from '@/lib/seo-data/trades'
 import { cities } from '@/lib/seo-data/cities'
+import { getAllProjects } from '@/lib/portfolio/get-projects'
 import type { MetadataRoute } from 'next'
 
 const BASE_URL = 'https://trades.avorria.com'
@@ -40,6 +41,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }))
+
+  const portfolioPages = getAllProjects().map(project => ({
+    url: `${BASE_URL}/portfolio/${project.slug}`,
+    lastModified: new Date(project.publishedAt),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }))
   
-  return [...staticPages, ...tradeCityPages, ...cityPages]
+  return [...staticPages, ...tradeCityPages, ...cityPages, ...portfolioPages]
 }
