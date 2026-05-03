@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Metadata } from "next";
+import ContactForm from "@/components/contact/contact-form";
 
 export const metadata: Metadata = {
   title: "Contact | Avorria Trades",
@@ -73,43 +74,7 @@ export default function ContactPage() {
 
           {/* Right Column — Quick Form */}
           <div>
-            <div className="bg-steel border border-border rounded-2xl p-8 shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-amber/5 rounded-full blur-3xl pointer-events-none" />
-              
-              <h2 className="font-heading font-bold text-2xl text-white mb-8 relative z-10">Send a quick message</h2>
-              
-              <form className="space-y-6 relative z-10">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-muted-light mb-2">Name</label>
-                    <input type="text" className="w-full bg-forge-black border border-border rounded-sm px-4 py-3 text-white focus:outline-none focus:border-amber transition-colors" placeholder="Your name" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-muted-light mb-2">Email</label>
-                    <input type="email" className="w-full bg-forge-black border border-border rounded-sm px-4 py-3 text-white focus:outline-none focus:border-amber transition-colors" placeholder="your@email.com" />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-muted-light mb-2">Subject</label>
-                  <select className="w-full bg-forge-black border border-border rounded-sm px-4 py-3 text-white focus:outline-none focus:border-amber transition-colors appearance-none">
-                    <option>General enquiry</option>
-                    <option>Pricing question</option>
-                    <option>Existing client support</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-muted-light mb-2">Message</label>
-                  <textarea rows={5} className="w-full bg-forge-black border border-border rounded-sm px-4 py-3 text-white focus:outline-none focus:border-amber transition-colors resize-none" placeholder="How can we help?" />
-                </div>
-
-                <button type="button" className="btn-primary w-full py-4 text-lg">
-                  Send Message
-                </button>
-              </form>
-            </div>
+            <ContactForm />
           </div>
         </div>
       </div>
