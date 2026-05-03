@@ -95,7 +95,6 @@ export default function Footer() {
           <div>
             <h4 className="font-heading font-semibold text-white mb-6">Get in Touch</h4>
             <ul className="space-y-3 text-sm text-muted">
-              <li>01246 912 840</li>
               <li>hello@avorria.com</li>
               <li className="mt-4 pt-4 border-t border-border">
                 <Link href="/get-started" className="text-amber hover:text-amber-light font-medium flex items-center gap-1">

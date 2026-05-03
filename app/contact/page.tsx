@@ -3,7 +3,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Contact | Avorria Trades",
-  description: "Get in touch with the Avorria Trades team. Phone 01246 912 840 or email hello@avorria.com — we respond within one business day.",
+  description: "Get in touch with the Avorria Trades team. Email hello@avorria.com — we respond within one business day.",
 };
 
 export default function ContactPage() {
@@ -27,15 +27,7 @@ export default function ContactPage() {
               <h2 className="font-heading font-bold text-2xl text-white mb-8">Contact Information</h2>
               
               <div className="space-y-6">
-                <a href="tel:01246912840" className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 rounded-full bg-amber/10 text-amber flex items-center justify-center text-xl group-hover:bg-amber group-hover:text-forge-black transition-colors">
-                    📞
-                  </div>
-                  <div>
-                    <div className="text-sm text-muted mb-1">Phone</div>
-                    <div className="text-lg font-medium text-white group-hover:text-amber transition-colors">01246 912 840</div>
-                  </div>
-                </a>
+
 
                 <a href="mailto:hello@avorria.com" className="flex items-center gap-4 group">
                   <div className="w-12 h-12 rounded-full bg-amber/10 text-amber flex items-center justify-center text-xl group-hover:bg-amber group-hover:text-forge-black transition-colors">
