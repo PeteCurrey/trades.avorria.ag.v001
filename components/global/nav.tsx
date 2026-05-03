@@ -30,7 +30,6 @@ export default function Nav() {
         <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group" aria-label="Avorria Trades Home">
-            <span className="w-8 h-8 rounded bg-amber flex items-center justify-center font-heading font-bold text-forge-black text-sm">AT</span>
             <span className="font-heading font-bold text-white text-lg tracking-tight group-hover:text-amber transition-colors">
               Avorria <span className="text-amber">Trades</span>
             </span>
@@ -121,7 +120,6 @@ export default function Nav() {
             {/* Top row */}
             <div className="flex justify-between items-center mb-12">
               <Link href="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-2.5">
-                <span className="w-8 h-8 rounded bg-amber flex items-center justify-center font-heading font-bold text-forge-black text-sm">AT</span>
                 <span className="font-heading font-bold text-white text-lg tracking-tight">
                   Avorria <span className="text-amber">Trades</span>
                 </span>
